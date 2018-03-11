@@ -6,10 +6,13 @@ import {
 	View,
 	Text,
 	Button,
+	ScrollView,
+	RefreshControl,
 	TouchableWithoutFeedback
 } from 'react-native'
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view'
 
 import theme from '../configs/theme'
 import screen from '../utils/screen'
@@ -33,7 +36,7 @@ export default class Home extends Component {
 		let { navigation } = this.props;
 
 		return (
-			<View>
+			<View style={styles.home}>
 				<View style={styles.top}>
 					<Image source={require('../assets/logo.png')} style={styles.logo} />
 					<TouchableWithoutFeedback onPress={() => {
@@ -53,13 +56,118 @@ export default class Home extends Component {
 					}} />
 					</View>
 				</View>
-				<Text>Home!</Text>
+				<View style={styles.tabview}>
+					<ScrollableTabView 
+						initialPage={0}
+						scrollWithoutAnimation={true}
+						style={styles.home}
+						renderTabBar={() => <ScrollableTabBar />} >
+						<ScrollView 
+							tabLabel="推荐"
+							refreshControl={
+								<RefreshControl
+								refreshing={false}
+								colors={[themeColor]
+							}
+							enabled={true}/>}>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+							<Text>推荐</Text>
+						</ScrollView>
+						<ScrollView tabLabel="大杂烩">
+							<Text>大杂烩</Text>
+						</ScrollView>
+						<ScrollView tabLabel="娱乐八卦">
+							<Text>娱乐八卦</Text>
+						</ScrollView>
+						<ScrollView tabLabel="原创">
+							<Text>原创</Text>
+						</ScrollView>
+						<ScrollView tabLabel="猫女郎">
+							<Text>猫女郎</Text>
+						</ScrollView>
+						<ScrollView tabLabel="猫女郎">
+							<Text>猫女郎</Text>
+						</ScrollView>
+						<ScrollView tabLabel="猫女郎">
+							<Text>猫女郎</Text>
+						</ScrollView>
+						<ScrollView tabLabel="猫女郎">
+							<Text>猫女郎</Text>
+						</ScrollView>
+						<ScrollView tabLabel="猫女郎">
+							<Text>猫女郎</Text>
+						</ScrollView>
+					</ScrollableTabView>
+				</View>
 			</View>
 		)
 	}
 }
 
 const styles = StyleSheet.create({
+	home: {
+		'flex': 1
+	},
+	tabview: {
+		'flex': 1
+	},
 	top: {
 		flexDirection: 'row',
 		alignItems: 'center',
@@ -89,5 +197,8 @@ const styles = StyleSheet.create({
 	},
 	scanner: {
 		marginHorizontal: 10
+	},
+	content: {
+		flex: 1
 	}
 })
