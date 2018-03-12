@@ -17,7 +17,8 @@ export default class Group extends Component {
 		headerTitleStyle: {
 			alignSelf: 'center',
 			fontSize: topBar.fontSize,
-			color: topBar.color
+			color: '#fff',
+			textAlign: 'center'
 		},
 		headerStyle: {
 			height: topBar.height,

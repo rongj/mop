@@ -5,7 +5,7 @@ export default {
 	topBar: {
 		fontSize: 16,
 		height: 44,
-		color: '#fff'
+		color: '#fa464c'
 	},
 	bottomTab: {
 		labelSize: 12,

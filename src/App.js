@@ -76,13 +76,15 @@ const BottomTab = TabNavigator(
 		tabBarPosition: 'bottom',
 		swipeEnabled: false,
 		animationEnabled: false,
-		// lazy: true,
 		tabBarOptions: {
 			activeTintColor: theme.themeColor,
 			inactiveTintColor: theme.bottomTab.inactiveColor,
 			labelStyle: {
 				fontSize: theme.bottomTab.labelSize, // 文字大小
 			},
+			style: {
+				borderTopColor: '#e8e8e8'
+			}
 		}
 	}
 )

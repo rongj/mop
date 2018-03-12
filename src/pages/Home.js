@@ -7,17 +7,25 @@ import {
 	Text,
 	Button,
 	ScrollView,
+	FlatList,
 	RefreshControl,
+	TouchableOpacity,
 	TouchableWithoutFeedback
 } from 'react-native'
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view'
 
+import HomeHeader from '../components/HomeHeader'
+import ListItem from '../components/ListItem'
+
+import { listData } from '../services/mock'
+
 import theme from '../configs/theme'
 import screen from '../utils/screen'
 
 let { topBar, themeColor } = theme
+let { width, ratio } = screen
 
 export default class Home extends Component {
 	constructor(props) {
@@ -31,104 +39,42 @@ export default class Home extends Component {
 		header: null,
 	});
 
-	render() {
 
+	render() {
 		let { navigation } = this.props;
 
 		return (
-			<View style={styles.home}>
-				<View style={styles.top}>
-					<Image source={require('../assets/logo.png')} style={styles.logo} />
-					<TouchableWithoutFeedback onPress={() => {
-						navigation.navigate('Login')
-					}}>
-						<View style={styles.search}>
-
-							<Ionicons name={'ios-search-outline'} size={ (topBar.height - 10)/2} />
-							<Text style={styles.searchText}>搜索感兴趣的内容</Text>
-						</View>
-					</TouchableWithoutFeedback>
-					<View style={styles.scanner} onPress={() => {
-						navigation.navigate('Login')
-					}}>
-						<Ionicons name={'ios-qr-scanner'} size={topBar.height/2}  onPress={() => {
-						navigation.navigate('Login')
-					}} />
-					</View>
-				</View>
+			<View style={{ flex: 1 }}>
+				<HomeHeader 
+					onSearch={() => navigation.navigate('Login')}
+					onScanner={() => navigation.navigate('Login')} />
 				<View style={styles.tabview}>
+					<Ionicons name={'ios-add-circle-outline'} style={styles.add} />
 					<ScrollableTabView 
 						initialPage={0}
 						scrollWithoutAnimation={true}
-						style={styles.home}
-						renderTabBar={() => <ScrollableTabBar />} >
+						tabBarTextStyle={{fontSize: 16}}
+						tabBarUnderlineStyle={{height: 1, backgroundColor: themeColor}}
+						tabBarActiveTextColor={themeColor}
+						renderTabBar={() => <ScrollableTabBar style={styles.tabBar} tabStyle={styles.tab} />} >
 						<ScrollView 
 							tabLabel="推荐"
 							refreshControl={
 								<RefreshControl
 								refreshing={false}
-								colors={[themeColor]
-							}
-							enabled={true}/>}>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
-							<Text>推荐</Text>
+								colors={[themeColor]}
+								enabled={true}/>}>
+							{<FlatList 
+								data={ listData.recData }
+								ref={(flatList) => this._flatList = flatList}
+								renderItem={(item, index) => 
+									<ListItem 
+										keyExtractor={(item, index) => index}
+										listdata={item}
+										onPress={() => navigation.navigate('Detail', {
+											params: item
+										})}
+										onClose={() => {alert(item.item.title)}} />} />}
 						</ScrollView>
 						<ScrollView tabLabel="大杂烩">
 							<Text>大杂烩</Text>
@@ -162,43 +108,31 @@ export default class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-	home: {
-		'flex': 1
-	},
 	tabview: {
-		'flex': 1
-	},
-	top: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		height: topBar.height,
-		backgroundColor: topBar.color,
-		paddingHorizontal: 10
-	},
-	logo: {
-		width: 48,
-		height: 28,
-		marginRight: 10
-	},
-	search: {
 		flex: 1,
-		flexDirection: 'row',
-		alignItems: 'center',
-		height: topBar.height - 16,
-		backgroundColor: '#e8e8e8',
-		borderRadius: topBar.height - 16,
-		paddingHorizontal: 10,
-		marginRight: 5
+		backgroundColor: '#fff'
 	},
-	searchText: {
-		color: theme.lightColor,
-		marginLeft: 4,
-		fontSize: 14
+	tabBar: {
+		height: 43,
+		paddingRight: 44,
+		borderWidth: 1/ratio
 	},
-	scanner: {
-		marginHorizontal: 10
+	tab: {
+		height: 44,
+		paddingLeft: 0,
+		paddingRight: 0,
+		marginHorizontal: 12
 	},
-	content: {
-		flex: 1
+	add: {
+		position: 'absolute',
+		right: 0,
+		top: 0,
+		fontSize: 20,
+		color: '#000',
+		lineHeight: 44,
+		borderLeftWidth: 1,
+		borderLeftColor: '#e8e8e8',
+		width: 44,
+		textAlign: 'center'
 	}
 })
