@@ -51,7 +51,7 @@ const BottomTab = TabNavigator(
 			screen : GroupScreen,
 			navigationOptions : ({ navigator }) => (
 				{
-					tabBarLabel : '圈子',
+					tabBarLabel : '发现',
 					tabBarIcon : ({ focused, tintColor }) => (
 						<Ionicons name={`ios-planet${focused ? '' : '-outline'}`} size={theme.bottomTab.iconSize} color={tintColor} />
 					)
