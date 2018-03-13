@@ -15,8 +15,10 @@ import HomeScreen from './pages/Home'
 import VideoScreen from './pages/Video'
 import GroupScreen from './pages/Group'
 import MyScreen from './pages/My'
-import DetailScreen from './pages/Detail'
-import LoginScreen from './pages/Login'
+import Detail from './pages/Detail'
+import Login from './pages/Login'
+import Setting from './pages/Setting'
+import About from './pages/About'
 
 import theme from './configs/theme'
 
@@ -92,8 +94,10 @@ const BottomTab = TabNavigator(
 const Navigator = StackNavigator(
 	{
 		BottomTab: { screen: BottomTab },
-		Detail: { screen: DetailScreen },
-		Login: { screen: LoginScreen },
+		Detail: { screen: Detail },
+		Login: { screen: Login },
+		Setting: { screen: Setting },
+		About: { screen: About },
 	},
 	{
 		navigationOptions: {

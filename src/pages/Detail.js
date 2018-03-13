@@ -40,7 +40,7 @@ export default class Detail extends Component {
 								<Text style={{fontSize: 12, color: '#999'}}>2018-03-12 17:51</Text>
 							</View>
 						</View>
-						<Text style={styles.button}>关注</Text>
+						<Text style={styles.button} onPress={() => alert('关注')}>关注</Text>
 					</View>
 					<View>
 						<Text style={{fontSize: 16, color: '#333', lineHeight: 26}}>

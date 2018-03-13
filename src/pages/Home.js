@@ -6,6 +6,7 @@ import {
 	View,
 	Text,
 	Button,
+	StatusBar,
 	ScrollView,
 	FlatList,
 	RefreshControl,
@@ -45,6 +46,7 @@ export default class Home extends Component {
 
 		return (
 			<View style={{ flex: 1 }}>
+				<StatusBar backgroundColor={themeColor}/>
 				<HomeHeader 
 					onSearch={() => navigation.navigate('Login')}
 					onScanner={() => navigation.navigate('Login')} />
