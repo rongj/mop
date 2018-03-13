@@ -13,7 +13,7 @@ let { topBar, themeColor } = theme
 
 export default class Group extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
-		headerTitle : '圈子',
+		headerTitle : '发现',
 		headerTitleStyle: {
 			alignSelf: 'center',
 			fontSize: topBar.fontSize,

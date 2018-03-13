@@ -74,7 +74,9 @@ export default class Home extends Component {
 										keyExtractor={(item, index) => index}
 										listdata={item}
 										onPress={() => navigation.navigate('Detail', {
-											params: item
+											title: item.item.title,
+											username: item.item.username,
+											userid: item.item.userid
 										})}
 										onClose={() => {alert(item.item.title)}} />} />}
 						</ScrollView>
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		color: '#000',
 		lineHeight: 44,
-		borderLeftWidth: 1,
+		borderLeftWidth: 1/ratio,
 		borderLeftColor: '#e8e8e8',
 		width: 44,
 		textAlign: 'center'

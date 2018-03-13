@@ -28,15 +28,17 @@ export default class Detail extends Component {
 	})
 
 	render() {
+		let item = this.props.navigation.state.params
 		return (
 			<ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
 				<View style={styles.container}>
-					<Text style={styles.title}>货车高速上爆胎撞护栏 60000多枚硬币被抛出</Text>
+					<Text style={styles.title}>{item.title}</Text>
 					<View style={styles.header}>
 						<View style={styles.portrait}>
-							<Image source={{uri: 'http://i1.mopimg.cn/head/453217439/80x80'}} style={{width: 36, height: 36, borderRadius: 36, marginRight: 5}}/>
+							<Image source={{uri: `http://i1.mopimg.cn/head/${item.userid}/80x80`}} 
+								style={{width: 36, height: 36, borderRadius: 36, marginRight: 5}}/>
 							<View>
-								<Text style={{fontSize: 14, color: '#000'}}>钱江晚报</Text>
+								<Text style={{fontSize: 14, color: '#000'}}>{item.username}</Text>
 								<Text style={{fontSize: 12, color: '#999'}}>2018-03-12 17:51</Text>
 							</View>
 						</View>

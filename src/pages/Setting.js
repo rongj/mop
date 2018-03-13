@@ -19,15 +19,11 @@ export default class Setting extends Component {
 		headerTitle : '设置',
 		headerTitleStyle: {
 			alignSelf: 'center',
-			fontSize: topBar.fontSize,
-			color: '#fff',
-			textAlign: 'center'
+			fontSize: topBar.fontSize
 		},
 		headerStyle: {
-			height: topBar.height,
-			backgroundColor: themeColor
-		},
-		headerRight: null,
+			height: topBar.height
+		}
 	})
 
 	render() {

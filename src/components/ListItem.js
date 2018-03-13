@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
 	item: {
 		paddingHorizontal: 15,
 		paddingVertical: 10,
-		borderBottomWidth: 1,
+		borderBottomWidth: 1/ratio,
 		borderBottomColor: '#e8e8e8'
 	},
 	itemTitle: {
